@@ -1,16 +1,31 @@
-\documentclass{article}
+\documentclass[8pt,a4paper,landscape,oneside]{amsart}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{color}
 \usepackage{fancyhdr}
-\usepackage{geometry}
- \geometry{
- a4paper,
- total={200mm,280mm},
- left=5mm,
- top=15mm,
- }
- 
+\usepackage{float}
+\usepackage{fullpage}
+%\usepackage{geometry}
+% \usepackage[top=0pt, bottom=1cm, left=0.3cm, right=0.3cm]{geometry}
+\usepackage[top=3pt, bottom=1cm, left=0.3cm, right=0.3cm]{geometry}
+\usepackage{graphicx}
+% \usepackage{listings}
+\usepackage{subcaption}
+\usepackage[scaled]{beramono}
+\usepackage{titling}
+\usepackage{datetime}
 \usepackage{enumitem}
-\setlist{nosep}
+\usepackage{multicol}
+
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.1em\vspace{-1em}}%
+}
 
 % Minted
 \usepackage{minted}
@@ -18,12 +33,51 @@
 \newcommand{\bashcode}[1]{\inputminted{bash}{_code/#1}}
 \newcommand{\regcode}[1]{\inputminted{cpp}{code/#1}}
 
+% Header/Footer
+% \geometry{includeheadfoot}
+%\fancyhf{}
 \pagestyle{fancy}
-\fancyhf{}
-\rhead{\thepage}
 \lhead{Volgograd State Technical University (Bulankin, Nosov, Penskoy)}
+\rhead{\thepage}
+\cfoot{}
+\setlength{\headheight}{15.2pt}
+\setlength{\droptitle}{-20pt}
+\posttitle{\par\end{center}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Math and bit operators
+\DeclareMathOperator{\lcm}{lcm}
+\newcommand*\BitAnd{\mathrel{\&}}
+\newcommand*\BitOr{\mathrel{|}}
+\newcommand*\ShiftLeft{\ll}
+\newcommand*\ShiftRight{\gg}
+\newcommand*\BitNeg{\ensuremath{\mathord{\sim}}}
+\DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
+
+\newenvironment{myitemize}
+{ \begin{itemize}[leftmargin=.5cm]
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{itemize}                  }
+
+% Title/Author
+\title{.*VSTU.*}
+\subtitle{Team Reference Document}
+\date{\ddmmyyyydate{\today{}}}
+
+% Output Verbosity
+\newif\ifverbose
+\verbosetrue
+% \verbosefalse
 
 \begin{document}
+
+\begin{multicols*}{3}
+\maketitle
+\thispagestyle{fancy}
+\vspace{-3em}
 
 \tableofcontents
 \clearpage
@@ -31,7 +85,7 @@
 \section{Code Templates}
 	\subsection{Basic Configuration}
 		\subsection{.vimrc}
-			\regcode{main.cpp}
+			\regcode{vimrc.sh}
 
 \section{Unordered lists}
 
@@ -48,4 +102,5 @@ nonewline
 \item The numbers starts at 1 with every call to the enumerate environment.
 \end{enumerate}
 
+\end{multicols*}
 \end{document}
