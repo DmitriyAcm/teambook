@@ -1,6 +1,7 @@
 // g++ -std=c++11 main.cpp -o main -D"_DEBUG_TEMICH_"
 
 #include <algorithm>
+#include <cmath>
 #include <functional>
 #include <iostream>
 #include <map>
@@ -19,20 +20,20 @@ using pii = pair<int, int>;
 #define Y second
 
 struct Solver {
-	void solve(istream& cin, ostream& cout) {
-		int a, b;
-		cin >> a >> b;
-		cout << a + b << endl;
-	}
+  void solve(istream& cin, ostream& cout) {
+    int a, b;
+    cin >> a >> b;
+    cout << a + b << endl;
+  }
 };
 
 struct Brute {
-	void solve(istream& cin, ostream& cout) {
-		int a, b;
-		cin >> a >> b;
-		while (b--) ++a;
-		cout << a << endl;
-	}
+  void solve(istream& cin, ostream& cout) {
+    int a, b;
+    cin >> a >> b;
+    while (b--) ++a;
+    cout << a << endl;
+  }
 };
 
 template <typename Solution>
@@ -69,8 +70,8 @@ void stress() {
 }
 
 int main() {
-	#ifdef _DEBUG_TEMICH_
-	stress();
-	#endif
-	Solver().solve(cin, cout);
+  #ifdef _DEBUG_TEMICH_
+  stress();
+  #endif
+  Solver().solve(cin, cout);
 }
