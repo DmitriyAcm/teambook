@@ -19,6 +19,56 @@ using pii = pair<int, int>;
 #define X first
 #define Y second
 
+template<typename T>
+ostream& operator<<(ostream& out, const vector<T>& v);
+
+template<typename U, typename V>
+ostream& operator<<(ostream& out, const map<U, V>& v);
+
+template<typename U, typename V>
+ostream& operator<<(ostream& out, const pair<U, V>& v);
+
+template<typename U, typename V>
+ostream& operator<<(ostream& out, const pair<U, V>& v) {
+  return out << "(" << v.first << ", " << v.second << ")";
+}
+
+template<typename U, typename V>
+ostream& operator<<(ostream& out, const map<U, V>& v) {
+  out << "{";
+  bool f = false;
+  for (const auto& p : v) {
+    out << (!f ? "" : ", ") << p;
+    f = true;
+  }
+  return out << "}";
+}
+
+template<typename T>
+ostream& operator<<(ostream& out, const vector<T>& v) {
+  out << "{";
+  for (int i = 0; i < int(v.size()); ++i)
+    out << (i == 0 ? "" : ", ") << v[i];
+  return out << "}";
+}
+
+void cerr_printer(bool start) {}
+template<typename T, typename ... Args>
+void cerr_printer(bool start, const T& x, const Args& ... args) {
+  if (!start) cerr << ", ";
+  cerr << x;
+  cerr_printer(false, args...);
+}
+
+template<typename ... Args>
+void dbg(const char * name, int line, const Args& ... args) {
+  cerr << "[" << line << "] (" << name << ") = (";
+  cerr_printer(true, args...);
+  cerr << ")" << endl;
+}
+
+#define DBG(...) { dbg(#__VA_ARGS__, __LINE__, __VA_ARGS__); }
+
 struct Solver {
   void solve(istream& cin, ostream& cout) {
     int a, b;
