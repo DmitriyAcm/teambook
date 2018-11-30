@@ -89,20 +89,257 @@
 		\subsubsection{stress and template}
 			\regcode{main.cpp}
 
-\section{Unordered lists}
+\clearpage
 
-\begin{itemize}
-\item The individual entries are indicated with a black dot, a so-called bullet.
-\item ahhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhaa\\hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh end\newline
-hhhhhhh
-nonewline
-\item The text in the entries may be of any length.
-\end{itemize}
+\section{Misc}
+        \subsection{Debugging Tips}
+            \begin{myitemize}
+                \item Stack overflow? Recursive DFS on tree that is actually a long path?
+                \item Floating-point numbers
+                    \begin{itemize}
+                        \item Getting \texttt{NaN}? Make sure \texttt{acos} etc.\ are
+                            not getting values out of their range (perhaps
+                            \texttt{1+eps}).
+                        \item Rounding negative numbers?
+                        \item Outputting in scientific notation?
+                    \end{itemize}
+                \item Wrong Answer?
+                    \begin{itemize}
+                        \item Read the problem statement again!
+                        \item Are multiple test cases being handled correctly?
+                              Try repeating the same test case many times.
+                        \item Integer overflow?
+                        \item Think very carefully about boundaries of all input parameters
+                        \item Try out possible edge cases:
+                            \begin{itemize}
+                                \item $n=0, n=-1, n=1, n=2^{31}-1$ or $n=-2^{31}$
+                                \item List is empty, or contains a single element
+                                \item $n$ is even, $n$ is odd
+                                \item Graph is empty, or contains a single vertex
+                                \item Graph is a multigraph (loops or multiple edges)
+                                \item Polygon is concave or non-simple
+                            \end{itemize}
+                        \item Is initial condition wrong for small cases?
+                        \item Are you sure the algorithm is correct?
+                        \item Explain your solution to someone.
+                        \item Are you using any functions that you don't completely understand? Maybe STL functions?
+                        \item Maybe you (or someone else) should rewrite the solution?
+                        \item Can the input line be empty?
+                    \end{itemize}
+                \item Run-Time Error?
+                    \begin{itemize}
+                        \item Is it actually Memory Limit Exceeded?
+                    \end{itemize}
+            \end{myitemize}
 
-\begin{enumerate}
-\item 
-\item The numbers starts at 1 with every call to the enumerate environment.
-\end{enumerate}
+        \subsection{Solution Ideas}
+            \begin{myitemize}
+                \item Dynamic Programming
+                    \begin{itemize}
+                        \item Parsing CFGs: CYK Algorithm
+                        \item Drop a parameter, recover from others
+                        \item Swap answer and a parameter
+                        \item When grouping: try splitting in two
+                        \item $2^k$ trick
+                        \item When optimizing
+                            \begin{itemize}
+                                \item Convex hull optimization
+                                    \begin{itemize}
+                                        \item $\mathrm{dp}[i] = \min_{j<i}\{\mathrm{dp}[j] + b[j] \times a[i]\}$
+                                        \item $b[j] \geq b[j+1]$
+                                        \item optionally $a[i] \leq a[i+1]$
+                                        \item $O(n^2)$ to $O(n)$
+                                    \end{itemize}
+                                \item Divide and conquer optimization
+                                    \begin{itemize}
+                                        \item $\mathrm{dp}[i][j] = \min_{k<j}\{\mathrm{dp}[i-1][k] + C[k][j]\}$
+                                        \item $A[i][j] \leq A[i][j+1]$
+                                        \item $O(kn^2)$ to $O(kn\log{n})$
+                                        \item sufficient: $C[a][c] + C[b][d] \leq C[a][d] + C[b][c]$, $a\leq b\leq c\leq d$ (QI)
+                                    \end{itemize}
+                                \item Knuth optimization
+                                    \begin{itemize}
+                                        \item $\mathrm{dp}[i][j] = \min_{i<k<j}\{\mathrm{dp}[i][k] + \mathrm{dp}[k][j] + C[i][j]\}$
+                                        \item $A[i][j-1] \leq A[i][j] \leq A[i+1][j]$
+                                        \item $O(n^3)$ to $O(n^2)$
+                                        \item sufficient: QI and $C[b][c] \leq C[a][d]$, $a\leq b\leq c\leq d$
+                                    \end{itemize}
+                            \end{itemize}
+                    \end{itemize}
+                \item Greedy
+                \item Randomized
+                \item Optimizations
+                    \begin{itemize}
+                        \item Use bitset (/64)
+                        \item Switch order of loops (cache locality)
+                    \end{itemize}
+                \item Process queries offline
+                    \begin{itemize}
+                        \item Mo's algorithm
+                    \end{itemize}
+                \item Square-root decomposition
+                \item Precomputation
+                \item Efficient simulation
+                    \begin{itemize}
+                        \item Mo's algorithm
+                        \item Sqrt decomposition
+                        \item Store $2^k$ jump pointers
+                    \end{itemize}
+                \item Data structure techniques
+                    \begin{itemize}
+                        \item Sqrt buckets
+                        \item Store $2^k$ jump pointers
+                        \item $2^k$ merging trick
+                    \end{itemize}
+                \item Counting
+                    \begin{itemize}
+                        \item Inclusion-exclusion principle
+                        \item Generating functions
+                    \end{itemize}
+                \item Graphs
+                    \begin{itemize}
+                        \item Can we model the problem as a graph?
+                        \item Can we use any properties of the graph?
+                        \item Strongly connected components
+                        \item Cycles (or odd cycles)
+                        \item Bipartite (no odd cycles)
+                            \begin{itemize}
+                                \item Bipartite matching
+                                \item Hall's marriage theorem
+                                \item Stable Marriage
+                            \end{itemize}
+                        \item Cut vertex/bridge
+                        \item Biconnected components
+                        \item Degrees of vertices (odd/even)
+                        \item Trees
+                            \begin{itemize}
+                                \item Heavy-light decomposition
+                                \item Centroid decomposition
+                                \item Least common ancestor
+                                \item Centers of the tree
+                            \end{itemize}
+                        \item Eulerian path/circuit
+                        \item Chinese postman problem
+                        \item Topological sort
+                        \item (Min-Cost) Max Flow
+                        \item Min Cut
+                            \begin{itemize}
+                                \item Maximum Density Subgraph
+                            \end{itemize}
+                        \item Huffman Coding
+                        \item Min-Cost Arborescence
+                        \item Steiner Tree
+                        \item Kirchoff's matrix tree theorem
+                        \item Pr\"ufer sequences
+                        \item Lov\'asz Toggle
+                        \item Look at the DFS tree (which has no cross-edges)
+                        \item Is the graph a DFA or NFA?
+                            \begin{itemize}
+                                \item Is it the Synchronizing word problem?
+                            \end{itemize}
+                    \end{itemize}
+                \item Mathematics
+                    \begin{itemize}
+                        \item Is the function multiplicative?
+                        \item Look for a pattern
+                        \item Permutations
+                            \begin{itemize}
+                                \item Consider the cycles of the permutation
+                            \end{itemize}
+                        \item Functions
+                            \begin{itemize}
+                                \item Sum of piecewise-linear functions is a piecewise-linear function
+                                \item Sum of convex (concave) functions is convex (concave)
+                            \end{itemize}
+                        \item Modular arithmetic
+                            \begin{itemize}
+                                \item Chinese Remainder Theorem
+                                \item Linear Congruence
+                            \end{itemize}
+                        \item Sieve
+                        \item System of linear equations
+                        \item Values too big to represent?
+                            \begin{itemize}
+                                \item Compute using the logarithm
+                                \item Divide everything by some large value
+                            \end{itemize}
+                        \item Linear programming
+                            \begin{itemize}
+                                \item Is the dual problem easier to solve?
+                            \end{itemize}
+                        \item Can the problem be modeled as a different combinatorial problem? Does that simplify calculations?
+                    \end{itemize}
+                \item Logic
+                    \begin{itemize}
+                        \item 2-SAT
+                        \item XOR-SAT (Gauss elimination or Bipartite matching)
+                    \end{itemize}
+                \item Meet in the middle
+                \item Only work with the smaller half ($\log(n)$)
+                \item Strings
+                    \begin{itemize}
+                        \item Trie (maybe over something weird, like bits)
+                        \item Suffix array
+                        \item Suffix automaton (+DP?)
+                        \item Aho-Corasick
+                        \item eerTree
+                        \item Work with $S+S$
+                    \end{itemize}
+                \item Hashing
+                \item Euler tour, tree to array
+                \item Segment trees
+                    \begin{itemize}
+                        \item Lazy propagation
+                        \item Persistent
+                        \item Implicit
+                        \item Segment tree of X
+                    \end{itemize}
+                \item Geometry
+                    \begin{itemize}
+                        \item Minkowski sum (of convex sets)
+                        \item Rotating calipers
+                        \item Sweep line (horizontally or vertically?)
+                        \item Sweep angle
+                        \item Convex hull
+                    \end{itemize}
+                \item Fix a parameter (possibly the answer).
+                \item Are there few distinct values?
+                \item Binary search
+                \item Sliding Window (+ Monotonic Queue)
+                \item Computing a Convolution? Fast Fourier Transform
+                \item Computing a 2D Convolution? FFT on each row, and then on each column
+                \item Exact Cover (+ Algorithm X)
+                \item Cycle-Finding
+                \item What is the smallest set of values that identify the solution? The cycle structure of the permutation? The powers of primes in the factorization?
+                \item Look at the complement problem
+                    \begin{itemize}
+                        \item Minimize something instead of maximizing
+                    \end{itemize}
+                \item Immediately enforce necessary conditions. (All values greater than 0? Initialize them all to 1)
+                \item Add large constant to negative numbers to make them positive
+                \item Counting/Bucket sort
+            \end{myitemize}
+\clearpage
+    \section*{Practice Contest Checklist}
+        \begin{itemize}
+            \item How many operations per second? Compare to local machine.
+            \item What is the stack size?
+            \item How to use printf/scanf with long long/long double?
+            \item Are \texttt{\_{}\_{}int128} and \texttt{\_{}\_{}float128} available?
+            \item Does MLE give RTE or MLE as a verdict? What about stack overflow?
+            \item What is \texttt{RAND\_{}MAX}?
+            \item How does the judge handle extra spaces (or missing newlines) in the output?
+            \item Look at documentation for programming languages.
+            \item Try different programming languages: C++, Java and Python.
+            \item Try the submit script.
+            \item Try local programs: i?python[23], factor.
+            \item Try submitting with \texttt{assert(false)} and \texttt{assert(true)}.
+            \item Return-value from \texttt{main}.
+            \item Look for directory with sample test cases.
+            \item Make sure printing works.
+
+            \item Remove this page from the notebook.
+        \end{itemize}
 
 \end{multicols*}
 \end{document}
