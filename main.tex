@@ -12,12 +12,26 @@
 \usepackage{enumitem}
 \setlist{nosep}
 
+% Minted
+\usepackage{minted}
+\newcommand{\code}[1]{\inputminted[fontsize=\normalsize,baselinestretch=1]{cpp}{_code/#1}}
+\newcommand{\bashcode}[1]{\inputminted{bash}{_code/#1}}
+\newcommand{\regcode}[1]{\inputminted{cpp}{code/#1}}
+
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\thepage}
 \lhead{Volgograd State Technical University (Bulankin, Nosov, Penskoy)}
 
 \begin{document}
+
+\tableofcontents
+\clearpage
+
+\section{Code Templates}
+	\subsection{Basic Configuration}
+		\subsection{.vimrc}
+			\regcode{main.cpp}
 
 \section{Unordered lists}
 
@@ -30,7 +44,7 @@ nonewline
 \end{itemize}
 
 \begin{enumerate}
-\item The labels consists of sequential numbers.
+\item 
 \item The numbers starts at 1 with every call to the enumerate environment.
 \end{enumerate}
 
