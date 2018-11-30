@@ -1,4 +1,7 @@
 // g++ -std=c++11 main.cpp -o main -D"_DEBUG_TEMICH_"
+#pragma GCC optimize("O3")
+#pragma GCC target(
+    "sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx")
 
 #include <algorithm>
 #include <cmath>
