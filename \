@@ -110,10 +110,6 @@
 		\regcode{bpws.cpp}
 	\subsection{Bridge search}
 		\regcode{br.cpp}
-	\subsection{Lca}
-		\regcode{lca.cpp}
-	\subsection{2-SAT}
-		\regcode{2sat.cpp}
 
 \clearpage
 

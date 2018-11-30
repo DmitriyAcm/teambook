@@ -59,7 +59,7 @@ int jacobi (int a, int b)
 
 bool bpsw (int n) {
   if ((int)sqrt(n+0.0) *
-			(int)sqrt(n+0.0) == n)  return false;
+      (int)sqrt(n+0.0) == n)  return false;
   int dd=5;
   for (;;) {
     int g = gcd (n, abs(dd));
@@ -81,9 +81,9 @@ bool bpsw (int n) {
     qm2 = qm * 2;
     if (d & mask) {
       long long t1 = (u2m * v) % n, 
-					 t2 = (v2m * u) % n,
+           t2 = (v2m * u) % n,
         t3 = (v2m * v) % n, 
-				t4 = (((u2m * u) % n) * dd) % n;
+        t4 = (((u2m * u) % n) * dd) % n;
       u = t1 + t2;
       if (u & 1)  u += n;
       u = (u >> 1) % n;
@@ -111,7 +111,7 @@ bool bpsw (int n) {
 }
 
 bool prime (int n) {
-	// Call for prime check
+  // Call for prime check
   for (int i=0; i<trivial_limit && p[i]<n; ++i)
     if (n % p[i] == 0)
       return false;
@@ -123,7 +123,7 @@ bool prime (int n) {
 }
 
 void prime_init() {
-	// Call before prime check
+  // Call before prime check
   for (int i=2, j=0; j<trivial_limit; ++i) {
     bool pr = true;
     for (int k=2; k*k<=i; ++k)
