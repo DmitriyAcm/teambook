@@ -1,6 +1,7 @@
 \documentclass[11.5pt,a4paper,landscape,oneside]{amsart}
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
-\usepackage[T1]{fontenc}
+\usepackage[T1, T2A]{fontenc}
+\usepackage[english, russian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{caption}
@@ -33,6 +34,9 @@
 \newcommand{\bashcode}[1]{\inputminted{bash}{code/#1}}
 \newcommand{\regcode}[1]{\inputminted[xleftmargin=2em,linenos]{cpp}{code/#1}}
 
+\newcommand{\Sequence}[1]{\subsection{#1}}
+\newcommand{\Term}[1]{\subsection{#1}}
+
 % Header/Footer
 % \geometry{includeheadfoot}
 %\fancyhf{}
@@ -53,6 +57,7 @@
 \newcommand*\ShiftLeft{\ll}
 \newcommand*\ShiftRight{\gg}
 \newcommand*\BitNeg{\ensuremath{\mathord{\sim}}}
+\newcommand{\stirlingii}{\genfrac{\{}{\}}{0pt}{}}
 \DeclareRobustCommand{\stirling}{\genfrac\{\}{0pt}{}}
 
 \newenvironment{myitemize}
@@ -347,6 +352,204 @@
                 \item Add large constant to negative numbers to make them positive
                 \item Counting/Bucket sort
             \end{myitemize}
+	\clearpage
+	\section{Формулы}
+	\Term{Преобразование Абеля}
+	\begin{equation}
+		\sum_{k=0}^n a_k b_k=a_n B_n - \sum_{k=0}^{n-1} B_k (a_{k+1} - a_k),\quad\text{где}\ B_n = \sum_{k=0}^n b_k
+	\end{equation}
+	\Term{Арифметико-геометрическая прогрессия}
+	\begin{equation}
+		u_{n}=qu_{n-1}+d,\quad\text{где}\ q\ne 1, d\ne 0
+	\end{equation}
+	\begin{equation}
+		u_{n+1} = q^{n}\left(u_{1}+\frac{d}{q-1}\right)- \frac{d}{q-1}
+	\end{equation}
+	\begin{equation}
+		\lim\limits_{n\to\infty}u_{n}=\frac{d}{1-q}\quad\text{при}\ \lvert q\rvert<1
+	\end{equation}
+	\begin{equation}
+		\sum_{k=1}^{n}u_{k} = \frac{(u_{1}(q-1)+d)(q^n-1)}{(q-1)^2}-\frac{dn}{q-1}
+	\end{equation}
+	\Term{Золотое сечение}
+	\begin{equation}
+		\varphi=\frac{1+\sqrt{5}}{2}
+	\end{equation}
+	\Sequence{Числа Фибоначчи}
+	\begin{equation}
+		F_0=0,\quad F_1=0,\quad F_{n}=F_{n-1}+F_{n-2}
+	\end{equation}
+	0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986, 102334155
+	\begin{equation}
+		F_{n}=\frac{\varphi^n - (-\varphi)^{-n}}{\varphi - (-\varphi)^{-1}}=\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1-\sqrt{5}}{2}\right)^n}{\sqrt{5}} = \frac{(1+\sqrt{5})^n-(1-\sqrt{5})^n}{2^n\cdot\sqrt{5}}
+	\end{equation}
+	\begin{equation}
+		F_n = \left\lfloor\frac{\varphi^n}{\sqrt{5}}\right\rceil=\left\lfloor\frac{\varphi^n}{\sqrt{5}}+\frac{1}{2}\right\rfloor
+	\end{equation}
+	\begin{equation}
+		n(F) = \left\lfloor \log_\varphi \left(F\cdot\sqrt{5} + \frac{1}{2}\right) \right\rfloor
+	\end{equation}
+	\begin{equation}
+		F_n\sim\frac{\varphi^n}{\sqrt{5}}\quad\text{при}\ n\to\infty
+	\end{equation}
+	\begin{equation}
+		\lim_{n\to\infty}\frac{F_{n+1}}{F_n}=\varphi
+	\end{equation}
+	\begin{equation}
+		F_{n+1}=\sum_{k=0}^{\left\lfloor\frac{n}{2}\right\rfloor} \binom{n-k}{k}
+	\end{equation}
+	\begin{equation}
+		\sum_{i=1}^n F_i = F_{n+2} - 1
+	\end{equation}
+	\begin{equation}
+		\sum_{i=0}^{n-1} F_{2i+1} = F_{2n}
+	\end{equation}
+	\begin{equation}
+		\sum_{i=1}^{n} F_{2i} = F_{2n+1}-1
+	\end{equation}
+	\begin{equation}
+		\sum_{i=1}^n {F_i}^2 = F_{n} F_{n+1}
+	\end{equation}
+	\begin{equation}
+		F_{n-1}F_{n+1} - F_n^2 = (-1)^n
+	\end{equation}
+	\begin{equation}
+		F_n^2 - F_{n-r}F_{n+r} = (-1)^{n-r}F_r^2
+	\end{equation}
+	\begin{equation}
+		F_m F_{n+1} - F_{m+1} F_n = (-1)^n F_{m-n}
+	\end{equation}
+	\begin{equation}
+		F_{2n} = F_{n+1}^2 - F_{n-1}^2 = F_n \left(F_{n+1}+F_{n-1}\right) = F_n \left(F_{n}+2F_{n-1}\right)
+	\end{equation}
+	\begin{equation}
+		F_{2n+1} = F_{n}^2 + F_{n+1}^2
+	\end{equation}
+	\Sequence{Числа трибоначчи}
+	\begin{equation}
+		t_0=0,\quad t_1=0,\quad t_2=1,\quad t_{n}=t_{n-1}+t_{n-2}+t_{n-3}
+	\end{equation}
+	0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136, 5768, 10609, 19513, 35890, 66012, 121415, 223317, 410744, 755476, 1389537, 2555757, 4700770, 8646064, 15902591, 29249425, 53798080, 98950096, 181997601, 334745777, 615693474, 1132436852
+	\Sequence{Числа Люка}
+	\begin{equation}
+		L_0=2,\quad L_1=1,\quad L_{n}=L_{n-1}+L_{n-2}
+	\end{equation}
+	2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, 843, 1364, 2207, 3571, 5778, 9349, 15127, 24476, 39603, 64079, 103682, 167761, 271443, 439204, 710647, 1149851, 1860498, 3010349, 4870847, 7881196, 12752043, 20633239, 33385282, 54018521, 87403803
+	\begin{equation}
+		L_n = F_{n-1}+F_{n+1}=F_n+2F_{n-1} = F_{n+2}-F_{n-2}
+	\end{equation}
+	\begin{equation}
+		L_n = \varphi^n + (1-\varphi)^{n} = \varphi^n + (- \varphi)^{-n}=\left({ 1+ \sqrt{5} \over 2}\right)^n + \left({ 1- \sqrt{5} \over 2}\right)^n
+	\end{equation}
+	\Sequence{Биномиальные коэффициенты}
+	\begin{equation}
+		(x+y)^n=\sum_{k=0}^n\binom{n}{k} x^{n-k}y^k
+	\end{equation}
+	\begin{equation}
+		\binom{n}{k} = \frac{n!}{k!\cdot(n-k)!}
+	\end{equation}
+	\begin{equation}
+		\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}
+	\end{equation}
+	\begin{equation}
+		\binom{n}{k} = \binom{n}{n-k}
+	\end{equation}
+	\begin{equation}
+		\binom{n}{k} = \frac{n}{k}\cdot\binom{n-1}{k-1}
+	\end{equation}
+	\begin{equation}
+		\binom{n}{m}\binom{n-m}{k}=\binom{n}{k}\binom{n-k}{m}
+	\end{equation}
+	\begin{equation}
+		\sum_{j=0}^k\binom{m}{j}\binom{n-m}{k-j}=\binom{n}{k}
+	\end{equation}
+	\begin{equation}
+		\sum_{j=k}^n\binom{j}{k}=\binom{n+1}{k+1}
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n \binom{n}{k} = 2^n
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n\binom{n}{k}^3=\sum_{k=0}^n\binom{n}{k}^2\binom{2k}n
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n (-1)^k\binom{n}{k} = 0
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^{2n}(-1)^k\binom{2n}{k}^3=(-1)^n\cdot\frac{(3n)!}{(n!)^3}
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^m (-1)^k\binom{n}{k} = (-1)^m\binom{n-1}{m}
+	\end{equation}
+	\begin{equation}
+		\sum_{k=m}^n \binom{n}{k}\binom{k}{m} = 2^{n-m}\binom{n}{m}
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n k \binom{n}{k} = n 2^{n-1}
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n k^2 \binom{n}{k} = n(n + 1)2^{n-2}
+	\end{equation}
+	\Sequence{Числа Каталана}
+	\begin{equation}
+		C_0 = 1,\quad C_{n+1}=\sum_{i=0}^{n}C_i\cdot C_{n-i}\
+	\end{equation}
+	1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845, 35357670, 129644790, 477638700, 1767263190, 6564120420, 24466267020, 91482563640, 343059613650, 1289904147324, 4861946401452, 18367353072152, 69533550916004, 263747951750360, 1002242216651368, 3814986502092304
+	\begin{equation}
+		C_n = \frac{1}{n+1}\binom{2n}{n} = \frac{(2n)!}{(n+1)!\cdot n!} = \prod_{k=2}^{n}\frac{n+k}{k}
+	\end{equation}
+	\begin{equation}
+		C_{n+1}=\frac{2(2n+1)}{n+2}\cdot C_n
+	\end{equation}
+	\Sequence{Числа Стирлинга 1-го рода}
+	\begin{equation}
+		\stirlingii{0}{0} = 1,\quad\stirlingii{n}{0}=\stirlingii{0}{n}=0,\quad\stirlingii{n+1}{k} = n \stirlingii{n}{k} + \stirlingii{n}{k-1}
+	\end{equation}
+	\begin{equation}
+		\stirlingii{n}{1} = (n-1)!,\quad\stirlingii{n}{n-1}=\binom{n}{2},\quad\stirlingii{n}{n}=1
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n\stirlingii{n}{k} = n!
+	\end{equation}
+	\begin{equation}
+		\prod_{j=0}^{n-1}(x+j)=\sum_{k=0}^n \stirlingii{n}{k}x^k
+	\end{equation}
+	\begin{equation}
+		\prod_{j=0}^{n-1}(x-j)=\sum_{k=0}^n (-1)^{n-k}\stirlingii{n}{k}x^k
+	\end{equation}
+	\Sequence{Числа Стирлинга 2-го рода}
+	\begin{equation}
+		\stirlingii{0}{0} = 1,\quad\stirlingii{n}{0}=\stirlingii{0}{n}=0,\quad\stirlingii{n+1}{k} = k \stirlingii{n}{k} + \stirlingii{n}{k-1}
+	\end{equation}
+	\begin{equation}
+		\stirlingii{n}{1} = 1,\quad\stirlingii{n}{2} = 2^{n-1}-1,\quad\stirlingii{n}{n-1}=\binom{n}{2},\quad\stirlingii{n}{n}=1
+	\end{equation}
+	\begin{equation}
+		\sum_{k=0}^n \stirlingii{n}{k}\prod_{j=0}^{n-1}(x-j)=x^n
+	\end{equation}
+	\begin{equation}
+		\stirlingii{n}{k}=\frac{1}{k!}\sum_{j=0}^k (-1)^{k-j}\binom{k}{j}j^n
+	\end{equation}
+	\begin{equation}
+		\stirlingii{n+1}{k+1} = \sum_{j=k}^n \binom{n}{j} \stirlingii{j}{k}
+	\end{equation}
+	\begin{equation}
+		\stirlingii{n+1}{k+1} = \sum_{j=k}^n (k+1)^{n-j} \stirlingii{j}{k}
+	\end{equation}
+	\begin{equation}
+		\stirlingii{n+k+1}{k} = \sum_{j=0}^k j \stirlingii{n+j}{j}
+	\end{equation}
+	\Sequence{Числа Белла}
+	\begin{equation}
+		B_0=1,\quad B_{n+1}=\sum_{k=0}^{n} \binom{n}{k} B_k
+	\end{equation}
+	1, 1, 2, 5, 15, 52, 203, 877, 4140, 21147, 115975, 678570, 4213597, 27644437, 190899322, 1382958545, 10480142147, 82864869804, 682076806159,  5832742205057, 51724158235372, 474869816156751, 4506715738447323, 44152005855084346, 445958869294805289, 4638590332229999353, 49631246523618756274
+	\begin{equation}
+		B_n=\sum_{k=0}^n \stirlingii{n}{k}
+	\end{equation}
 		\clearpage
 		\begin{tabular}{@{}l|l|l@{}}
     \toprule
