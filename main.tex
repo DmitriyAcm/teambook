@@ -1,7 +1,7 @@
 \documentclass[11.5pt,a4paper,landscape,oneside]{amsart}
 \usepackage{amsmath, amsthm, amssymb, amsfonts}
-\usepackage[T1, T2A]{fontenc}
-\usepackage[english, russian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{caption}
@@ -353,29 +353,29 @@
                 \item Counting/Bucket sort
             \end{myitemize}
 	\clearpage
-	\section{Формулы}
-	\Term{Преобразование Абеля}
+	\section{Formulas}
+	\Term{Abel tram}
 	\begin{equation}
-		\sum_{k=0}^n a_k b_k=a_n B_n - \sum_{k=0}^{n-1} B_k (a_{k+1} - a_k),\quad\text{где}\ B_n = \sum_{k=0}^n b_k
+		\sum_{k=0}^n a_k b_k=a_n B_n - \sum_{k=0}^{n-1} B_k (a_{k+1} - a_k),\quad\text{where}\ B_n = \sum_{k=0}^n b_k
 	\end{equation}
-	\Term{Арифметико-геометрическая прогрессия}
+	\Term{arithmetic geometric progression}
 	\begin{equation}
-		u_{n}=qu_{n-1}+d,\quad\text{где}\ q\ne 1, d\ne 0
+		u_{n}=qu_{n-1}+d,\quad\text{where}\ q\ne 1, d\ne 0
 	\end{equation}
 	\begin{equation}
 		u_{n+1} = q^{n}\left(u_{1}+\frac{d}{q-1}\right)- \frac{d}{q-1}
 	\end{equation}
 	\begin{equation}
-		\lim\limits_{n\to\infty}u_{n}=\frac{d}{1-q}\quad\text{при}\ \lvert q\rvert<1
+		\lim\limits_{n\to\infty}u_{n}=\frac{d}{1-q}\quad\text{given}\ \lvert q\rvert<1
 	\end{equation}
 	\begin{equation}
 		\sum_{k=1}^{n}u_{k} = \frac{(u_{1}(q-1)+d)(q^n-1)}{(q-1)^2}-\frac{dn}{q-1}
 	\end{equation}
-	\Term{Золотое сечение}
+	\Term{Golden section}
 	\begin{equation}
 		\varphi=\frac{1+\sqrt{5}}{2}
 	\end{equation}
-	\Sequence{Числа Фибоначчи}
+	\Sequence{Fibonachi}
 	\begin{equation}
 		F_0=0,\quad F_1=0,\quad F_{n}=F_{n-1}+F_{n-2}
 	\end{equation}
@@ -390,7 +390,7 @@
 		n(F) = \left\lfloor \log_\varphi \left(F\cdot\sqrt{5} + \frac{1}{2}\right) \right\rfloor
 	\end{equation}
 	\begin{equation}
-		F_n\sim\frac{\varphi^n}{\sqrt{5}}\quad\text{при}\ n\to\infty
+		F_n\sim\frac{\varphi^n}{\sqrt{5}}\quad\text{given}\ n\to\infty
 	\end{equation}
 	\begin{equation}
 		\lim_{n\to\infty}\frac{F_{n+1}}{F_n}=\varphi
@@ -425,12 +425,12 @@
 	\begin{equation}
 		F_{2n+1} = F_{n}^2 + F_{n+1}^2
 	\end{equation}
-	\Sequence{Числа трибоначчи}
+	\Sequence{Tribonachi}
 	\begin{equation}
 		t_0=0,\quad t_1=0,\quad t_2=1,\quad t_{n}=t_{n-1}+t_{n-2}+t_{n-3}
 	\end{equation}
 	0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136, 5768, 10609, 19513, 35890, 66012, 121415, 223317, 410744, 755476, 1389537, 2555757, 4700770, 8646064, 15902591, 29249425, 53798080, 98950096, 181997601, 334745777, 615693474, 1132436852
-	\Sequence{Числа Люка}
+	\Sequence{Luk numbers}
 	\begin{equation}
 		L_0=2,\quad L_1=1,\quad L_{n}=L_{n-1}+L_{n-2}
 	\end{equation}
@@ -441,7 +441,7 @@
 	\begin{equation}
 		L_n = \varphi^n + (1-\varphi)^{n} = \varphi^n + (- \varphi)^{-n}=\left({ 1+ \sqrt{5} \over 2}\right)^n + \left({ 1- \sqrt{5} \over 2}\right)^n
 	\end{equation}
-	\Sequence{Биномиальные коэффициенты}
+	\Sequence{Binomial coefficients}
 	\begin{equation}
 		(x+y)^n=\sum_{k=0}^n\binom{n}{k} x^{n-k}y^k
 	\end{equation}
@@ -493,7 +493,7 @@
 	\begin{equation}
 		\sum_{k=0}^n k^2 \binom{n}{k} = n(n + 1)2^{n-2}
 	\end{equation}
-	\Sequence{Числа Каталана}
+	\Sequence{Catalan numbers}
 	\begin{equation}
 		C_0 = 1,\quad C_{n+1}=\sum_{i=0}^{n}C_i\cdot C_{n-i}\
 	\end{equation}
@@ -504,7 +504,7 @@
 	\begin{equation}
 		C_{n+1}=\frac{2(2n+1)}{n+2}\cdot C_n
 	\end{equation}
-	\Sequence{Числа Стирлинга 1-го рода}
+	\Sequence{Stirling numbers 1}
 	\begin{equation}
 		\stirlingii{0}{0} = 1,\quad\stirlingii{n}{0}=\stirlingii{0}{n}=0,\quad\stirlingii{n+1}{k} = n \stirlingii{n}{k} + \stirlingii{n}{k-1}
 	\end{equation}
@@ -520,7 +520,7 @@
 	\begin{equation}
 		\prod_{j=0}^{n-1}(x-j)=\sum_{k=0}^n (-1)^{n-k}\stirlingii{n}{k}x^k
 	\end{equation}
-	\Sequence{Числа Стирлинга 2-го рода}
+	\Sequence{Stirling numbers 2}
 	\begin{equation}
 		\stirlingii{0}{0} = 1,\quad\stirlingii{n}{0}=\stirlingii{0}{n}=0,\quad\stirlingii{n+1}{k} = k \stirlingii{n}{k} + \stirlingii{n}{k-1}
 	\end{equation}
@@ -542,7 +542,7 @@
 	\begin{equation}
 		\stirlingii{n+k+1}{k} = \sum_{j=0}^k j \stirlingii{n+j}{j}
 	\end{equation}
-	\Sequence{Числа Белла}
+	\Sequence{Bell numbers}
 	\begin{equation}
 		B_0=1,\quad B_{n+1}=\sum_{k=0}^{n} \binom{n}{k} B_k
 	\end{equation}
